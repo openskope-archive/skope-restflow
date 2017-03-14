@@ -1,0 +1,32 @@
+
+imports:
+
+- classpath:/org/restflow/directors.yaml
+- classpath:/org/restflow/r/types.yaml
+
+components:
+
+- id: greetings_r
+  type: Workflow
+  properties:
+    director: !ref DataDrivenDirector
+    nodes:
+    - !ref create_greeting
+    - !ref render_greeting
+
+- id: create_greeting
+  type: RActorNode
+  properties:
+    actor.step: custom.greeting <- 'Greetings from the R actor!'
+    outflows: 
+      custom.greeting: greeting_to_use
+
+- id: render_greeting
+  type: RActorNode
+  properties:
+    inflows:
+      provided.greeting: greeting_to_use
+    actor.step: cat(provided.greeting, '\n')
+  
+
+      

@@ -1,0 +1,37 @@
+
+imports:
+
+- classpath:/org/restflow/directors.yaml
+- classpath:/org/restflow/r/types.yaml
+
+components:
+
+- id: greetings_r
+  type: Workflow
+  properties:
+    director: !ref DataDrivenDirector
+    nodes:
+    - !ref create_greetings
+    - !ref render_greeting
+
+- id: create_greetings
+  type: RActorNode
+  properties:
+    sequences:
+        greeting.from.sequence:
+        - Hello
+        - Good Afternoon
+        - Good night
+    actor.step: custom.greeting <- greeting.from.sequence
+    outflows: 
+      custom.greeting: greeting_to_use
+
+- id: render_greeting
+  type: RActorNode
+  properties:
+    inflows:
+      provided.greeting: greeting_to_use
+    actor.step: cat(provided.greeting, '\n')
+  
+
+      

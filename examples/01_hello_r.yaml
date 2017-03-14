@@ -1,0 +1,21 @@
+
+imports:
+
+- classpath:/org/restflow/directors.yaml
+- classpath:/org/restflow/r/types.yaml
+
+components:
+
+- id: hello_r
+  type: Workflow
+  properties:
+    director: !ref DataDrivenDirector
+    nodes:
+    - !ref say_hello_from_r
+
+- id: say_hello_from_r
+  type: RActorNode
+  properties:
+    actor.step: print('Hello R actor!')
+
+      
