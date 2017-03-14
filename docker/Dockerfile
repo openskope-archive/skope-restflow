@@ -30,8 +30,8 @@ RUN echo '****** Install Java 8 Runtime Environment'                            
  && pip3 install --upgrade pip                                                                      \
                                                                                                     \
  && echo '***** Download skope-restflow executable jar *****'                                       \
-    && mkdir ~skope/bin                                                                             \
-    && wget -O ~skope/bin/skope-restflow.jar https://github.com/openskope/skope-restflow/releases/download/v1.1.0/skope-restflow-1.1.0-jar-with-dependencies.jar
+ && mkdir ~skope/bin                                                                                \
+ && wget -O ~skope/bin/skope-restflow.jar https://github.com/openskope/skope-restflow/releases/download/v1.1.0/skope-restflow-1.1.0-jar-with-dependencies.jar
 
 USER skope
 
