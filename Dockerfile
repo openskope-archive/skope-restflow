@@ -1,6 +1,6 @@
 
 # start from debian base image with skope user and group defined 
-FROM  openskope/base
+FROM  openskope/base:0.1.0
 
 ARG DEBIAN_FRONTEND=noninteractive
 
